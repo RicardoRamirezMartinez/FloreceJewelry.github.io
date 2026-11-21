@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- ========================================
-       GOOGLE FONTS
+       WEBSITE FONTS
   ======================================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -16,20 +16,169 @@
     rel="stylesheet"
   >
 
-  <!-- ========================================
-       WEBSITE CSS
-       Controls colors, fonts, and layout
-  ======================================== -->
-  <link href="site.css" rel="stylesheet">
+  <!-- EXISTING WEBSITE CSS -->
+  <link rel="stylesheet" href="site.css">
 
-  <!-- ========================================
-       STORE JAVASCRIPT
-       Controls jewelry products and bag
-  ======================================== -->
+  <!-- EXISTING SHOPPING BAG AND PRODUCTS -->
   <script src="store.js" defer></script>
 
-  <!-- WEBSITE TITLE -->
   <title>Shop Gold | Florece Fine Jewelry</title>
+
+  <!-- ========================================
+       GOLD CATALOG STYLING
+       Only affects this page
+  ======================================== -->
+  <style>
+
+    /* Center the collection title */
+    .catalog-intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 45px;
+    }
+
+    .catalog-intro h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: clamp(42px, 5vw, 64px);
+      margin: 15px 0;
+    }
+
+    .catalog-intro p {
+      color: #70675e;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       PRICE FILTER BAR
+    ======================================== */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 0;
+      margin-bottom: 30px;
+      border-top: 1px solid #e7dfd3;
+      border-bottom: 1px solid #e7dfd3;
+    }
+
+    .price-filter {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .price-filter label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    .price-filter select {
+      padding: 12px 16px;
+      border: 1px solid #c9bba6;
+      background: #fffdf9;
+      color: #201b16;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+    }
+
+    .product-count {
+      color: #70675e;
+      font-size: 12px;
+    }
+
+    /* ========================================
+       EARRING PRODUCT GRID
+       4 products per row on desktop
+       2 on tablets
+       1 on small phones
+    ======================================== */
+    #product-list.products {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 28px 18px;
+    }
+
+    #product-list .product {
+      min-width: 0;
+      padding: 0;
+      background: transparent;
+    }
+
+    /* Product images */
+    #product-list .photo {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      background: #f8f5ef;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    #product-list .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Product names */
+    #product-list .product h2,
+    #product-list .product h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 400;
+      line-height: 1.4;
+      margin: 16px 0 8px;
+    }
+
+    /* Product prices */
+    #product-list .price {
+      font-size: 14px;
+      color: #201b16;
+      margin: 8px 0;
+    }
+
+    /* Add to Bag buttons */
+    #product-list .button {
+      margin-top: 12px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* No matching products */
+    .filter-empty {
+      text-align: center;
+      padding: 40px 10px;
+      color: #70675e;
+    }
+
+    .filter-empty[hidden] {
+      display: none;
+    }
+
+    /* Tablet */
+    @media (max-width: 900px) {
+      #product-list.products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 500px) {
+      #product-list.products {
+        grid-template-columns: 1fr;
+      }
+
+      .filter-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+  </style>
 
 </head>
 
@@ -37,7 +186,6 @@
 
   <!-- ========================================
        TOP ANNOUNCEMENT BAR
-       Edit announcement text here
   ======================================== -->
   <div class="announcement">
     Florece Fine Jewelry · Timeless pieces, everyday elegance
@@ -45,37 +193,28 @@
 
   <!-- ========================================
        TOP NAVIGATION
-       Logo on left, menu on right
+       Logo left, links right
   ======================================== -->
   <header class="nav">
 
-    <!-- Website logo -->
     <a class="logo" href="index.html">
       Florece
       <small>FINE JEWELRY</small>
     </a>
 
-    <!-- Navigation links -->
     <nav class="links" id="navLinks">
-
       <a href="index.html">Home</a>
-
       <a href="our-story.html">Our Story</a>
-
       <a href="gold.html">Gold</a>
-
       <a href="silver.html">Silver</a>
-
-      <!-- Bag text instead of shopping bag icon -->
       <a href="bag.html">Bag</a>
-
     </nav>
 
-    <!-- Mobile navigation button -->
+    <!-- Mobile menu -->
     <button
-      aria-expanded="false"
-      aria-label="Toggle navigation"
       class="menu-toggle"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
       onclick="const n=document.getElementById('navLinks');const open=n.classList.toggle('open');this.setAttribute('aria-expanded',open)"
     >
       ☰
@@ -84,42 +223,82 @@
   </header>
 
   <!-- ========================================
-       MAIN GOLD JEWELRY PAGE
+       MAIN GOLD COLLECTION
+       No large category pictures at the top
   ======================================== -->
   <main class="section">
 
-    <!-- ========================================
-         GOLD COLLECTION INTRODUCTION
-         Edit heading and description here
-    ======================================== -->
+    <!-- COLLECTION HEADING -->
     <div class="catalog-intro">
 
-      <!-- Small heading -->
       <span class="eyebrow">
         The Gold Collection
       </span>
 
-      <!-- Main page title -->
-      <h1>
-        Gold Jewelry
-      </h1>
+      <h1>Gold Jewelry</h1>
 
-      <!-- Collection description -->
       <p>
-        Explore our gold earrings. More gold jewelry
-        collections can be added when you are ready.
+        Discover our collection of timeless gold earrings.
       </p>
 
     </div>
 
     <!-- ========================================
-         GOLD PRODUCTS
-         Products are loaded from store.js
+         PRICE FILTER
+         Change price ranges here
+    ======================================== -->
+    <div class="filter-bar">
 
-         data-category="gold" tells JavaScript
-         to display only gold products.
+      <div class="price-filter">
 
-         Do not remove id="product-list"
+        <label for="price-filter">
+          Filter by Price
+        </label>
+
+        <select id="price-filter">
+
+          <option value="all">
+            All Prices
+          </option>
+
+          <option value="0-100">
+            Under $100
+          </option>
+
+          <option value="100-250">
+            $100 - $250
+          </option>
+
+          <option value="250-500">
+            $250 - $500
+          </option>
+
+          <option value="500-1000">
+            $500 - $1,000
+          </option>
+
+          <option value="1000-plus">
+            $1,000+
+          </option>
+
+        </select>
+
+      </div>
+
+      <!-- Automatically updates product count -->
+      <span class="product-count" id="product-count">
+        Loading jewelry...
+      </span>
+
+    </div>
+
+    <!-- ========================================
+         GOLD EARRING PRODUCTS
+
+         store.js loads product pictures,
+         names, prices and Add to Bag buttons.
+
+         Keep these attributes unchanged.
     ======================================== -->
     <div
       class="products"
@@ -128,6 +307,11 @@
     >
     </div>
 
+    <!-- Message when no products match -->
+    <p class="filter-empty" id="filter-empty" hidden>
+      No jewelry found in this price range.
+    </p>
+
   </main>
 
   <!-- ========================================
@@ -135,31 +319,22 @@
   ======================================== -->
   <footer class="footer">
 
-    <!-- Footer logo -->
     <a class="logo" href="index.html">
       Florece
       <small>FINE JEWELRY</small>
     </a>
 
-    <!-- Footer description -->
     <p>
       Timeless jewelry. Beautiful moments.
     </p>
 
-    <!-- Footer navigation links -->
     <div class="footer-links">
-
       <a href="index.html">Home</a>
-
       <a href="our-story.html">Our Story</a>
-
       <a href="gold.html">Gold</a>
-
       <a href="silver.html">Silver</a>
-
     </div>
 
-    <!-- Copyright -->
     <p>
       © <span id="year"></span> Florece Fine Jewelry.
     </p>
@@ -167,12 +342,94 @@
   </footer>
 
   <!-- ========================================
-       JAVASCRIPT
-       Automatically updates copyright year
+       PRICE FILTER JAVASCRIPT
+
+       Reads actual prices from store.js.
+       Does not change product data or bag.
   ======================================== -->
   <script>
+
+    // Automatically update copyright year
     document.getElementById("year").textContent =
       new Date().getFullYear();
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const filter = document.getElementById("price-filter");
+      const productList = document.getElementById("product-list");
+      const productCount = document.getElementById("product-count");
+      const emptyMessage = document.getElementById("filter-empty");
+
+      // Get gold products from store.js in display order
+      const goldProducts = Object.values(PRODUCTS).filter(
+        product => product.category === "gold"
+      );
+
+      function applyPriceFilter() {
+
+        const selectedRange = filter.value;
+        const cards = productList.querySelectorAll(".product");
+
+        let visibleCount = 0;
+
+        cards.forEach(function (card, index) {
+
+          const product = goldProducts[index];
+          const price = product ? product.price : null;
+
+          let showProduct = selectedRange === "all";
+
+          // Only filter products with valid prices
+          if (Number.isFinite(price) && price >= 0) {
+
+            if (selectedRange === "0-100") {
+              showProduct = price < 100;
+            }
+
+            if (selectedRange === "100-250") {
+              showProduct = price >= 100 && price < 250;
+            }
+
+            if (selectedRange === "250-500") {
+              showProduct = price >= 250 && price < 500;
+            }
+
+            if (selectedRange === "500-1000") {
+              showProduct = price >= 500 && price < 1000;
+            }
+
+            if (selectedRange === "1000-plus") {
+              showProduct = price >= 1000;
+            }
+
+          }
+
+          card.hidden = !showProduct;
+          card.style.display = showProduct ? "" : "none";
+
+          if (showProduct) {
+            visibleCount++;
+          }
+
+        });
+
+        // Update visible product count
+        productCount.textContent =
+          visibleCount + (visibleCount === 1 ? " Piece" : " Pieces");
+
+        // Display message if nothing matches
+        emptyMessage.hidden = visibleCount !== 0;
+
+      }
+
+      // Update when customer selects a price range
+      filter.addEventListener("change", applyPriceFilter);
+
+      // Show all products when page first loads
+      applyPriceFilter();
+
+    });
+
   </script>
 
 </body>
