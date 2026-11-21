@@ -17,19 +17,168 @@
   >
 
   <!-- ========================================
-       WEBSITE CSS
-       Controls colors, fonts, and layout
+       EXISTING WEBSITE CSS AND JAVASCRIPT
   ======================================== -->
   <link href="site.css" rel="stylesheet">
-
-  <!-- ========================================
-       STORE JAVASCRIPT
-       Controls jewelry products and bag
-  ======================================== -->
   <script src="store.js" defer></script>
 
-  <!-- WEBSITE TITLE -->
   <title>Shop Silver | Florece Fine Jewelry</title>
+
+  <!-- ========================================
+       SILVER COLLECTION STYLING
+       These styles only affect this page
+  ======================================== -->
+  <style>
+
+    /* Center the collection heading */
+    .catalog-intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 45px;
+    }
+
+    .catalog-intro h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: clamp(42px, 5vw, 64px);
+      margin: 15px 0;
+    }
+
+    .catalog-intro p {
+      color: #70675e;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       PRICE FILTER BAR
+    ======================================== */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 0;
+      margin-bottom: 30px;
+      border-top: 1px solid #e7dfd3;
+      border-bottom: 1px solid #e7dfd3;
+    }
+
+    .price-filter {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .price-filter label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    .price-filter select {
+      padding: 12px 16px;
+      border: 1px solid #c9bba6;
+      background: #fffdf9;
+      color: #201b16;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+    }
+
+    .product-count {
+      color: #70675e;
+      font-size: 12px;
+    }
+
+    /* ========================================
+       SILVER PRODUCT GRID
+       4 products per row on desktop
+       2 on tablets
+       1 on small phones
+    ======================================== */
+    #product-list.products {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 28px 18px;
+    }
+
+    #product-list .product {
+      min-width: 0;
+      padding: 0;
+      background: transparent;
+    }
+
+    /* Jewelry pictures */
+    #product-list .photo {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      background: #f8f5ef;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    #product-list .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Product names */
+    #product-list .product h2,
+    #product-list .product h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 400;
+      line-height: 1.4;
+      margin: 16px 0 8px;
+    }
+
+    /* Product prices */
+    #product-list .price {
+      font-size: 14px;
+      color: #201b16;
+      margin: 8px 0;
+    }
+
+    /* Add to Bag buttons */
+    #product-list .button {
+      margin-top: 12px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Empty price range message */
+    .filter-empty {
+      text-align: center;
+      padding: 40px 10px;
+      color: #70675e;
+    }
+
+    .filter-empty[hidden] {
+      display: none;
+    }
+
+    /* Tablet layout */
+    @media (max-width: 900px) {
+      #product-list.products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* Mobile layout */
+    @media (max-width: 500px) {
+      #product-list.products {
+        grid-template-columns: 1fr;
+      }
+
+      .filter-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+  </style>
 
 </head>
 
@@ -44,37 +193,30 @@
 
   <!-- ========================================
        TOP NAVIGATION
-       Logo on left, menu on right
+       Logo left, links right
   ======================================== -->
   <header class="nav">
 
-    <!-- Website logo on the left -->
+    <!-- Website logo -->
     <a class="logo" href="index.html">
       Florece
       <small>FINE JEWELRY</small>
     </a>
 
-    <!-- Navigation links on the right -->
+    <!-- Navigation links -->
     <nav class="links" id="navLinks">
-
       <a href="index.html">Home</a>
-
       <a href="our-story.html">Our Story</a>
-
       <a href="gold.html">Gold</a>
-
       <a href="silver.html">Silver</a>
-
-      <!-- Bag text instead of shopping bag icon -->
       <a href="bag.html">Bag</a>
-
     </nav>
 
-    <!-- Mobile navigation button -->
+    <!-- Mobile menu -->
     <button
-      aria-expanded="false"
-      aria-label="Toggle navigation"
       class="menu-toggle"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
       onclick="const n=document.getElementById('navLinks');const open=n.classList.toggle('open');this.setAttribute('aria-expanded',open)"
     >
       ☰
@@ -83,42 +225,84 @@
   </header>
 
   <!-- ========================================
-       MAIN SILVER JEWELRY PAGE
+       MAIN SILVER COLLECTION
+       No large category pictures at the top
   ======================================== -->
   <main class="section">
 
     <!-- ========================================
          SILVER COLLECTION INTRODUCTION
-         Edit title and description here
     ======================================== -->
     <div class="catalog-intro">
 
-      <!-- Small heading -->
       <span class="eyebrow">
         The Silver Collection
       </span>
 
-      <!-- Main page title -->
-      <h1>
-        Silver Jewelry
-      </h1>
+      <h1>Silver Jewelry</h1>
 
-      <!-- Collection description -->
       <p>
-        Discover our silver collection as new pieces
-        become available.
+        Discover our collection of timeless silver jewelry.
       </p>
 
     </div>
 
     <!-- ========================================
-         SILVER PRODUCTS
-         Products are loaded from store.js
+         PRICE FILTER
+         Edit price ranges here
+    ======================================== -->
+    <div class="filter-bar">
 
-         data-category="silver" displays
-         only silver jewelry products.
+      <div class="price-filter">
 
-         Do not remove id="product-list"
+        <label for="price-filter">
+          Filter by Price
+        </label>
+
+        <select id="price-filter">
+
+          <option value="all">
+            All Prices
+          </option>
+
+          <option value="0-100">
+            Under $100
+          </option>
+
+          <option value="100-250">
+            $100 - $250
+          </option>
+
+          <option value="250-500">
+            $250 - $500
+          </option>
+
+          <option value="500-1000">
+            $500 - $1,000
+          </option>
+
+          <option value="1000-plus">
+            $1,000+
+          </option>
+
+        </select>
+
+      </div>
+
+      <!-- Number of visible jewelry pieces -->
+      <span class="product-count" id="product-count">
+        Loading jewelry...
+      </span>
+
+    </div>
+
+    <!-- ========================================
+         SILVER JEWELRY PRODUCTS
+
+         store.js loads jewelry pictures,
+         names, prices, and Add to Bag buttons.
+
+         Keep these attributes unchanged.
     ======================================== -->
     <div
       class="products"
@@ -128,12 +312,20 @@
     </div>
 
     <!-- ========================================
-         EMPTY COLLECTION MESSAGE
-         Edit this message when you add products
+         NO MATCHING PRODUCTS MESSAGE
     ======================================== -->
-    <p class="empty-note">
+    <p class="filter-empty" id="filter-empty" hidden>
+      No jewelry found in this price range.
+    </p>
+
+    <!-- ========================================
+         EMPTY SILVER COLLECTION MESSAGE
+
+         Displayed only when there are
+         no silver products at all.
+    ======================================== -->
+    <p class="empty-note" id="silver-coming-soon" hidden>
       Silver products coming soon.
-      Add products in store.js when ready.
     </p>
 
   </main>
@@ -156,15 +348,10 @@
 
     <!-- Footer navigation links -->
     <div class="footer-links">
-
       <a href="index.html">Home</a>
-
       <a href="our-story.html">Our Story</a>
-
       <a href="gold.html">Gold</a>
-
       <a href="silver.html">Silver</a>
-
     </div>
 
     <!-- Copyright -->
@@ -175,13 +362,107 @@
   </footer>
 
   <!-- ========================================
-       JAVASCRIPT
-       Automatically updates copyright year
+       PRICE FILTER JAVASCRIPT
+
+       Filters silver products by price.
+       Does not change shopping bag behavior.
   ======================================== -->
   <script>
+
+    // Update copyright year
     document.getElementById("year").textContent =
       new Date().getFullYear();
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const filter = document.getElementById("price-filter");
+      const productList = document.getElementById("product-list");
+      const productCount = document.getElementById("product-count");
+      const emptyMessage = document.getElementById("filter-empty");
+      const comingSoon = document.getElementById("silver-coming-soon");
+
+      // Read silver products from store.js
+      const silverProducts =
+        typeof PRODUCTS !== "undefined"
+          ? Object.values(PRODUCTS).filter(
+              product => product.category === "silver"
+            )
+          : [];
+
+      function applyPriceFilter() {
+
+        const selectedRange = filter.value;
+        const cards = productList.querySelectorAll(".product");
+
+        let visibleCount = 0;
+
+        cards.forEach(function (card, index) {
+
+          const product = silverProducts[index];
+
+          const price = product
+            ? Number(product.price)
+            : NaN;
+
+          let showProduct = selectedRange === "all";
+
+          // Apply selected price range
+          if (Number.isFinite(price) && price >= 0) {
+
+            if (selectedRange === "0-100") {
+              showProduct = price < 100;
+            }
+
+            if (selectedRange === "100-250") {
+              showProduct = price >= 100 && price < 250;
+            }
+
+            if (selectedRange === "250-500") {
+              showProduct = price >= 250 && price < 500;
+            }
+
+            if (selectedRange === "500-1000") {
+              showProduct = price >= 500 && price < 1000;
+            }
+
+            if (selectedRange === "1000-plus") {
+              showProduct = price >= 1000;
+            }
+
+          }
+
+          card.hidden = !showProduct;
+          card.style.display = showProduct ? "" : "none";
+
+          if (showProduct) {
+            visibleCount++;
+          }
+
+        });
+
+        // Update number of displayed products
+        productCount.textContent =
+          visibleCount +
+          (visibleCount === 1 ? " Piece" : " Pieces");
+
+        // Show correct empty message
+        const noProducts = cards.length === 0;
+
+        comingSoon.hidden = !noProducts;
+        emptyMessage.hidden = noProducts || visibleCount !== 0;
+
+      }
+
+      // Filter products when customer changes price
+      filter.addEventListener("change", applyPriceFilter);
+
+      // Apply default filter when page loads
+      applyPriceFilter();
+
+    });
+
   </script>
 
 </body>
 </html>
+
