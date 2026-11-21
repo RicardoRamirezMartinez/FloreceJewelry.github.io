@@ -1,3 +1,235 @@
-<!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="site.css" rel="stylesheet"/><script defer="" src="store.js"></script><title>Shopping Bag | Florece Fine Jewelry</title></head><body><div class="announcement">Florece Fine Jewelry · Timeless pieces, everyday elegance</div><header class="nav"><a class="logo" href="index.html">Florece<small>FINE JEWELRY</small></a><nav class="links" id="navLinks"><a href="index.html">Home</a><a href="our-story.html">Our Story</a><a href="gold.html">Gold</a><a href="silver.html">Silver</a></nav><button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle" onclick="const n=document.getElementById('navLinks');const open=n.classList.toggle('open');this.setAttribute('aria-expanded',open)">☰</button><a aria-label="Shopping bag" class="bag-icon" href="bag.html">🛍</a></header><main class="section"><div class="catalog-intro"><span class="eyebrow">Your Selection</span><h1>Shopping Bag</h1><p>Review your jewelry before continuing to secure checkout.</p></div><div id="cart-items"></div><div class="cart-total">Total: <span id="cart-total">$0.00</span></div><div style="text-align:center"><button class="button" disabled="" id="checkout-button">Secure Stripe Checkout</button><p class="notice" id="checkout-message"></p><p><a href="gold.html">Continue shopping</a></p></div></main><footer class="footer"><a class="logo" href="index.html">Florece<small>FINE JEWELRY</small></a><p>Timeless jewelry. Beautiful moments.</p><div class="footer-links"><a href="index.html">Home</a><a href="our-story.html">Our Story</a><a href="gold.html">Gold</a><a href="silver.html">Silver</a></div><p>© <span id="year"></span> Florece Fine Jewelry.</p></footer><script>document.getElementById("year").textContent=new Date().getFullYear();</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ========================================
+       GOOGLE FONTS
+  ======================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- ========================================
+       WEBSITE CSS
+       Controls colors, fonts, and layout
+  ======================================== -->
+  <link href="site.css" rel="stylesheet">
+
+  <!-- ========================================
+       STORE JAVASCRIPT
+       Controls shopping bag and checkout
+  ======================================== -->
+  <script src="store.js" defer></script>
+
+  <!-- WEBSITE TITLE -->
+  <title>Shopping Bag | Florece Fine Jewelry</title>
+
+</head>
+
+<body>
+
+  <!-- ========================================
+       TOP ANNOUNCEMENT BAR
+       Edit announcement text here
+  ======================================== -->
+  <div class="announcement">
+    Florece Fine Jewelry · Timeless pieces, everyday elegance
+  </div>
+
+  <!-- ========================================
+       TOP NAVIGATION
+       Logo on left, menu on right
+  ======================================== -->
+  <header class="nav">
+
+    <!-- Website logo on the left -->
+    <a class="logo" href="index.html">
+      Florece
+      <small>FINE JEWELRY</small>
+    </a>
+
+    <!-- Navigation links on the right -->
+    <nav class="links" id="navLinks">
+
+      <a href="index.html">Home</a>
+
+      <a href="our-story.html">Our Story</a>
+
+      <a href="gold.html">Gold</a>
+
+      <a href="silver.html">Silver</a>
+
+      <!-- Bag text instead of shopping bag icon -->
+      <a href="bag.html">Bag</a>
+
+    </nav>
+
+    <!-- Mobile navigation button -->
+    <button
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      class="menu-toggle"
+      onclick="const n=document.getElementById('navLinks');const open=n.classList.toggle('open');this.setAttribute('aria-expanded',open)"
+    >
+      ☰
+    </button>
+
+  </header>
+
+  <!-- ========================================
+       MAIN SHOPPING BAG PAGE
+  ======================================== -->
+  <main class="section">
+
+    <!-- ========================================
+         SHOPPING BAG INTRODUCTION
+         Edit heading and description here
+    ======================================== -->
+    <div class="catalog-intro">
+
+      <!-- Small heading -->
+      <span class="eyebrow">
+        Your Selection
+      </span>
+
+      <!-- Main page title -->
+      <h1>
+        Shopping Bag
+      </h1>
+
+      <!-- Page description -->
+      <p>
+        Review your jewelry before continuing
+        to secure checkout.
+      </p>
+
+    </div>
+
+    <!-- ========================================
+         SHOPPING BAG ITEMS
+
+         Products added to the bag appear here.
+
+         store.js controls this section.
+
+         Do not remove id="cart-items"
+    ======================================== -->
+    <div id="cart-items">
+    </div>
+
+    <!-- ========================================
+         SHOPPING BAG TOTAL
+
+         Automatically calculates the total
+         price of products in the bag.
+
+         Do not remove id="cart-total"
+    ======================================== -->
+    <div class="cart-total">
+
+      Total:
+
+      <span id="cart-total">
+        $0.00
+      </span>
+
+    </div>
+
+    <!-- ========================================
+         CHECKOUT SECTION
+    ======================================== -->
+    <div style="text-align:center">
+
+      <!-- ========================================
+           STRIPE CHECKOUT BUTTON
+
+           Disabled until Stripe checkout
+           is configured and enabled.
+      ======================================== -->
+      <button
+        class="button"
+        disabled
+        id="checkout-button"
+      >
+        Secure Stripe Checkout
+      </button>
+
+      <!-- ========================================
+           CHECKOUT MESSAGE
+
+           store.js can display checkout
+           information or errors here.
+      ======================================== -->
+      <p
+        class="notice"
+        id="checkout-message"
+      >
+      </p>
+
+      <!-- ========================================
+           CONTINUE SHOPPING LINK
+      ======================================== -->
+      <p>
+        <a href="gold.html">
+          Continue shopping
+        </a>
+      </p>
+
+    </div>
+
+  </main>
+
+  <!-- ========================================
+       WEBSITE FOOTER
+  ======================================== -->
+  <footer class="footer">
+
+    <!-- Footer logo -->
+    <a class="logo" href="index.html">
+      Florece
+      <small>FINE JEWELRY</small>
+    </a>
+
+    <!-- Footer description -->
+    <p>
+      Timeless jewelry. Beautiful moments.
+    </p>
+
+    <!-- Footer navigation links -->
+    <div class="footer-links">
+
+      <a href="index.html">Home</a>
+
+      <a href="our-story.html">Our Story</a>
+
+      <a href="gold.html">Gold</a>
+
+      <a href="silver.html">Silver</a>
+
+    </div>
+
+    <!-- Copyright -->
+    <p>
+      © <span id="year"></span> Florece Fine Jewelry.
+    </p>
+
+  </footer>
+
+  <!-- ========================================
+       JAVASCRIPT
+       Automatically updates copyright year
+  ======================================== -->
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
